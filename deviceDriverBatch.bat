@@ -1,14 +1,17 @@
-:FOR /F "skip=2 tokens=2,*" %%A IN ('reg.exe query "HKCU\Volatile Environment" /v "USERPROFILE"') DO set "UserPath=%%B"
-: CREATE DIRECTORY
-:md %UserPath%\My Documents\Arduino\tools\ArduBlockTool\tool"
-: MOVE FILE
-:xcopy /y "%CD%\ArduBlock\ardublock-all-201610.jar" "%UserPath%\My Documents\Arduino\tools\ArduBlockTool\tool"
 
-:INSTALL DRIVER
-cd "%CD%\CH341SER\"
-start /w setup.exe /s
+@ECHO OFF 
+TITLE Barnabas Driver and ArduBlock
 
-:: new code that installs ardublock on ALL windows profiles
-cd..
+wmic os get osarchitecture
+:: start at root
+CD \
+:: if 32 bit on 64 arch (x86) folder should exist
+IF EXIST "Program Files (x86)"\ ( cd "Program Files (x86)") ELSE ( cd "Program Files")
+CD "Barnabas Robotics"\"Barnabas Robotics Software and Drivers"
+:: install driver
+CD CH341SER
+START /w setup.exe /s
+CD .. 
+:: copy ardublock
 UserProfileFileCopy Arduino Documents
-pause
+PAUSE
