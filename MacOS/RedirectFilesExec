@@ -1,7 +1,0 @@
-#!/bin/bash
-
-echo Finding current directory...
-cd "$(dirname "$0")"
-
-echo Moving .jar and new libraries to correct location...
-mv Arduino ~/Documents

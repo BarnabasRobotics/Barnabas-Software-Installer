@@ -5,4 +5,4 @@ Revision History
 1.0.2 - Fixed bug where the CH341 installer was going to the wrong directory
 1.0.3 - Supports 32-bit operating system 
 1.0.4 - Includes NewPing and button blocks
-1.0.5 - 
+1.0.5 - Delete previous versions of Ardublock
